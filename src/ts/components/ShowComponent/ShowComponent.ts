@@ -1,4 +1,4 @@
-import Component from "../Component/Component";
+import Component from "../Component/Component.js";
 import { type ShowStructure } from "../types/types";
 
 class ShowComponent extends Component {
@@ -17,10 +17,20 @@ class ShowComponent extends Component {
   }
 
   render() {
-    const scoreStar = `
+    let scoreStar;
+    this.parentElement.append(this.element);
+
+    if (this.show.isWatched) {
+      scoreStar = `
       <li class="score__star">
         <button><i class="icon icon--score far fa-star" title=${this.show.score}/5></i></button>
       </li>`;
+    } else {
+      scoreStar = `
+      <li class="score__star">
+        <button><i class="icon icon--score far fa-star" title="0/5"></i></button>
+      </li>`;
+    }
 
     this.element.innerHTML = `
     <article class="serie">
