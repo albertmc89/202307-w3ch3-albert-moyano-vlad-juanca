@@ -1,4 +1,4 @@
-interface ShowStructure {
+export interface ShowStructure {
   id: number;
   name: string;
   creator: string;
