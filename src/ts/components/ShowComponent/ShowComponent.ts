@@ -10,7 +10,8 @@ class ShowComponent extends Component {
     show: ShowStructure,
     className = ""
   ) {
-    super(parentElement, "li", className);
+    tag = "li";
+    super(parentElement, tag, className);
 
     this.show = show;
   }

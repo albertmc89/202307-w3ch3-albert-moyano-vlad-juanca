@@ -2,9 +2,9 @@ abstract class Component {
   element: Element;
 
   constructor(
-    protected parentElement: Element,
-    public tag: string,
-    public className = ""
+    protected readonly parentElement: Element,
+    protected readonly tag: string,
+    protected readonly className = ""
   ) {
     this.element = document.createElement(tag);
     this.element.className = className;

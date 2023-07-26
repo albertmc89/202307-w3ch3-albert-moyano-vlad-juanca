@@ -12,4 +12,4 @@ emmies: number;
 #Components
 -AppComponent
 -ShowComponent
--ShowReelComponent
+-ShowsReelComponent
