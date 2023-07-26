@@ -1,18 +1,14 @@
 import Component from "../Component/Component.js";
 class AppComponent extends Component {
-  constructor(
-    parentElement: Element,
-    tag: string,
-    className = "",
-    public title: string,
-    public subtitle: string
-  ) {
+  public title: string;
+  public subtitle: string;
+
+  constructor(parentElement: Element, tag: string, className = "") {
     super(parentElement, tag, (className = ""));
   }
 
   render() {
-    const containerElement = document.querySelector("container")!;
-    containerElement.innerHTML = `
+    this.parentElement.innerHTML = `
     <header class="main-header">
       <h1 class="main-title">${this.title}</h1>
     </header>
