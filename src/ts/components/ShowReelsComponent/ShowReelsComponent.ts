@@ -1,32 +1,29 @@
 import Component from "../Component/Component.js";
-import { Shows } from "../types/types.js";
 
 class ShowReelComponent extends Component {
   constructor(
     parentElement: Element,
-    tag: string,
-    className = "",
     private readonly titleReels: string,
-    private readonly shows: Shows
+    private readonly textCounter: string[],
+    private readonly showsCount: number,
+    className = "series"
   ) {
-    tag = "ul";
-    super(parentElement, "ul", className);
+    const tag = "ul";
+    super(parentElement, tag, className);
   }
 
   render() {
-    const pendingSeriesCount = this.shows.filter(
-      (show) => !show.isWatched
-    ).length;
-
     let counterText;
 
-    if (pendingSeriesCount === 0) {
+    if (this.showsCount === 0) {
       counterText = `
-      <span class="list__info">Congrats! You've watched all your series</span>
+      <span class="list__info">${this.textCounter[0]}</span>
       `;
     } else {
       counterText = `
-      <span class="list__info">You have ${pendingSeriesCount} series pending to watch</span>
+      <span class="list__info">${
+        this.textCounter[1] + `${this.showsCount}` + this.textCounter[2]
+      }</span>
       `;
     }
 
