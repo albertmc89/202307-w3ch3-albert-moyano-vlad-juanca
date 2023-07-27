@@ -4,13 +4,8 @@ import { type ShowStructure } from "../types/types";
 class ShowComponent extends Component {
   show;
 
-  constructor(
-    parentElement: Element,
-    tag: string,
-    show: ShowStructure,
-    className = ""
-  ) {
-    tag = "li";
+  constructor(parentElement: Element, show: ShowStructure, className = "") {
+    const tag = "li";
     super(parentElement, tag, className);
 
     this.show = show;
@@ -23,13 +18,23 @@ class ShowComponent extends Component {
     if (this.show.isWatched) {
       scoreStar = `
       <li class="score__star">
-        <button><i class="icon icon--score far fa-star" title=${this.show.score}/5></i></button>
-      </li>`;
-    } else {
-      scoreStar = `
+        <button><i class="icon icon--score far fa-star" title="1/5"></i></button>
+      </li>
       <li class="score__star">
-        <button><i class="icon icon--score far fa-star" title="0/5"></i></button>
-      </li>`;
+        <button><i class="icon icon--score far fa-star" title="2/5"></i></button>
+      </li>
+      <li class="score__star">
+        <button><i class="icon icon--score far fa-star" title="3/5"></i></button>
+      </li>
+      <li class="score__star">
+        <button><i class="icon icon--score far fa-star" title="4/5"></i></button>
+      </li>
+      <li class="score__star">
+        <button><i class="icon icon--score far fa-star" title="5/5"></i></button>
+      </li>
+      `;
+    } else {
+      scoreStar = ``;
     }
 
     this.element.innerHTML = `
