@@ -1,9 +1,12 @@
 import Component from "../Component/Component.js";
 class AppComponent extends Component {
-  public title: string;
-  public subtitle: string;
-
-  constructor(parentElement: Element, tag: string, className = "") {
+  constructor(
+    parentElement: Element,
+    tag: string,
+    public title: string,
+    public subtitle: string,
+    className = ""
+  ) {
     super(parentElement, tag, (className = ""));
   }
 
@@ -14,8 +17,6 @@ class AppComponent extends Component {
     </header>
     <main class="main-content">
       <h2 class="main-content__title">${this.subtitle}</h2>
-      <section class="list">
-      </section >
     `;
   }
 }
