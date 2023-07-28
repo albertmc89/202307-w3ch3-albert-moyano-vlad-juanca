@@ -1,15 +1,18 @@
-#Data layer
--Show(object);
-id: number;
-name: string;
-creator: string;
-year: number;
-poster: string;
-isWatched: boolean;
-score: 0 | 1 | 2 | 3 | 4 | 5;
-emmies: number;
+# Data layer
 
-#Components
--AppComponent
--ShowComponent
--ShowsReelComponent
+-Show(object)
+
+- id: number;
+- name: string;
+- creator: string;
+- year: number;
+- poster: string;
+- isWatched: boolean;
+- score: between 0 and 5, inclusively;
+- emmies: number;
+
+# Components
+
+- AppComponent
+- ShowComponent
+- ShowsReelComponent

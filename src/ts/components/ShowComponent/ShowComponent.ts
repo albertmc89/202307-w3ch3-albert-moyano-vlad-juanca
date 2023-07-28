@@ -2,34 +2,49 @@ import Component from "../Component/Component.js";
 import { type ShowStructure } from "../types/types";
 
 class ShowComponent extends Component {
-  show;
-
   constructor(
     parentElement: Element,
-    tag: string,
-    show: ShowStructure,
+    public show: ShowStructure,
     className = ""
   ) {
-    tag = "li";
+    const tag = "li";
     super(parentElement, tag, className);
-
-    this.show = show;
   }
 
   render() {
-    let scoreStar;
+    let scoreStar = "";
     this.parentElement.append(this.element);
 
-    if (this.show.isWatched) {
+    if (!this.show.isWatched) {
       scoreStar = `
       <li class="score__star">
-        <button><i class="icon icon--score far fa-star" title=${this.show.score}/5></i></button>
-      </li>`;
+        <button><i class="icon icon--score far fa-star" title="1/5"></i></button>
+      </li>
+      <li class="score__star">
+        <button><i class="icon icon--score far fa-star" title="2/5"></i></button>
+      </li>
+      <li class="score__star">
+        <button><i class="icon icon--score far fa-star" title="3/5"></i></button>
+      </li>
+      <li class="score__star">
+        <button><i class="icon icon--score far fa-star" title="4/5"></i></button>
+      </li>
+      <li class="score__star">
+        <button><i class="icon icon--score far fa-star" title="5/5"></i></button>
+      </li>
+      `;
     } else {
-      scoreStar = `
-      <li class="score__star">
-        <button><i class="icon icon--score far fa-star" title="0/5"></i></button>
-      </li>`;
+      const givenStars = this.show.score;
+
+      for (let position = 1; position <= givenStars; position++) {
+        scoreStar =
+          scoreStar +
+          `
+          <li class="score__star">
+            <button><i class="icon icon--score far fa-star" title="${position}/5"></i></button>
+          </li>
+        `;
+      }
     }
 
     this.element.innerHTML = `
