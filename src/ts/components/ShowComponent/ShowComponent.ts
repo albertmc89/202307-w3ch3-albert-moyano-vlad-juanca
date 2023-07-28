@@ -2,17 +2,17 @@ import Component from "../Component/Component.js";
 import { type ShowStructure } from "../types/types";
 
 class ShowComponent extends Component {
-  show;
-
-  constructor(parentElement: Element, show: ShowStructure, className = "") {
+  constructor(
+    parentElement: Element,
+    public show: ShowStructure,
+    className = ""
+  ) {
     const tag = "li";
     super(parentElement, tag, className);
-
-    this.show = show;
   }
 
   render() {
-    let scoreStar;
+    let scoreStar = "";
     this.parentElement.append(this.element);
 
     if (!this.show.isWatched) {
@@ -34,7 +34,17 @@ class ShowComponent extends Component {
       </li>
       `;
     } else {
-      scoreStar = ``;
+      const givenStars = this.show.score;
+
+      for (let position = 1; position <= givenStars; position++) {
+        scoreStar =
+          scoreStar +
+          `
+          <li class="score__star">
+            <button><i class="icon icon--score far fa-star" title="${position}/5"></i></button>
+          </li>
+        `;
+      }
     }
 
     this.element.innerHTML = `
