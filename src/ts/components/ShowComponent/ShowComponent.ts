@@ -15,7 +15,7 @@ class ShowComponent extends Component {
     let scoreStar;
     this.parentElement.append(this.element);
 
-    if (this.show.isWatched) {
+    if (!this.show.isWatched) {
       scoreStar = `
       <li class="score__star">
         <button><i class="icon icon--score far fa-star" title="1/5"></i></button>

@@ -37,11 +37,25 @@ showReelComponentPending.render();
 
 const listElement1 = document.querySelector(".series")!;
 
-const pendingShowsElements = [];
+const showComponents: ShowComponent[] = [];
 pendingShows.forEach((show) => {
-  const showComponent = new ShowComponent(listElement1, "li", show);
+  const showComponent = new ShowComponent(listElement1, show);
   showComponent.render();
-  pendingShowsElements.push(showComponent);
+  showComponents.push(showComponent);
+});
+
+showComponents.forEach((showComponent) => {
+  const starsButtonElements =
+    showComponent.element.querySelectorAll(".score__star");
+
+  starsButtonElements.forEach((starButtonElement) => {
+    starButtonElement.addEventListener("click", () => {
+      const iconElement: HTMLElement =
+        starButtonElement.querySelector(".icon")!;
+      const numberStarsRanking = Number(iconElement.title[0]);
+      listElement2.append(showComponent.element);
+    });
+  });
 });
 
 const watchedShows = shows.filter((show) => show.isWatched);
@@ -67,7 +81,7 @@ const listElement2 = document.querySelectorAll(".series")[1]!;
 
 const watchedShowsElements = [];
 watchedShows.forEach((show) => {
-  const showComponent = new ShowComponent(listElement2, "li", show);
+  const showComponent = new ShowComponent(listElement2, show);
   showComponent.render();
   watchedShowsElements.push(showComponent);
 });
